@@ -9,7 +9,7 @@ blocks.sort(key=lambda x: min(x[0][2], x[1][2]))
 
 def fall(blocks: list[list[int, int, int], list[int, int, int], bool], check_stability: bool = True, return_on_change: bool = False):
 	blocks_count = len(blocks)
-	changed = False
+	changed = {}
 	i = 0
 	while i < blocks_count:
 		if check_stability and blocks[i][2]:
@@ -38,10 +38,12 @@ def fall(blocks: list[list[int, int, int], list[int, int, int], bool], check_sta
 			blocks[i][1][2] -= 1
 			blocks[i][-2][2] -= 1
 			blocks[i][-1][2] -= 1
-			i = max(-1, i - 3)
-			changed = True
+			if i not in changed:
+				changed[i] = 0
+			changed[i] += 1
 			if return_on_change:
 				return changed
+			i = max(-1, i - 3)
 		else:
 			blocks[i][2] = True
 		i += 1
@@ -49,18 +51,12 @@ def fall(blocks: list[list[int, int, int], list[int, int, int], bool], check_sta
 
 fall(blocks)
 
-can_be_removed = []
+falls = []
 
 for i, b in enumerate(blocks):
 	state = [[bb[0].copy(), bb[1].copy(), bb[2], bb[-2].copy(), bb[-1].copy()] for ii, bb in enumerate(blocks) if ii != i]
-	if not fall(state, False, True):
-		# print(f"Block {i} can be removed ({b})")
-		can_be_removed.append(i)
-	# else:
-	# 	print(f"Block {i} cannot be removed ({b}):")
-	# 	for i, (a, b) in enumerate(zip(old_state, new_state)):
-	# 		print(i, a, b, "<<<<<<<" if a != b else "")
+	falls.append(len(fall(state, False, False).keys()))
 
 # A little slow, but it works :)
-# (Slow about 60sec)
-print(len(can_be_removed))
+# (Slow about 160sec)
+print(sum(falls))

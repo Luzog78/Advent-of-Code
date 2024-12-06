@@ -1,18 +1,6 @@
 with open('/'.join(__file__.split('/')[:-2]) + '/inputs/day-04.txt') as f:
 	input = f.read()
 
-# input = '''MMMSXXMASM
-# MSAMXMSMSA
-# AMXSXMAAMM
-# MSAMASMSMX
-# XMASAMXAMM
-# XXAMMXXAMA
-# SMSMSASXSS
-# SAXAMASAAA
-# MAMMMXMMMM
-# MXMXAXMASX
-# '''
-
 input = input.strip().split('\n')
 w, h = len(input[0]) - 1, len(input) - 1
 count = 0

@@ -58,7 +58,7 @@ class Beam:
 					self.vy = -1
 					beams.append(Beam(self.x, self.y, 0, 1))
 					beams[-1].move()
-			
+
 			if self.vx == 1 and self.vy == 0:
 				if mirr_map[self.y][self.x][0]:
 					beams.remove(self)

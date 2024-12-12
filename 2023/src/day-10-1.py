@@ -22,7 +22,7 @@ def backtrack(pos, dist):
 			return
 
 	distances[pos[1]][pos[0]] = dist
-	
+
 	if pipes[pos[1]][pos[0]][0] and pipes[pos[1] - 1][pos[0]][1]:
 		backtrack((pos[0], pos[1] - 1), dist + 1)
 	if pipes[pos[1]][pos[0]][1] and pipes[pos[1] + 1][pos[0]][0]:

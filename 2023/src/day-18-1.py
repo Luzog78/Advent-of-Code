@@ -37,10 +37,10 @@ tab = [[1 if (x, y) in positions else 0 for x in range(minx, maxx + 1)] for y in
 # def repend(pos):
 # 	if pos[0] < 0 or pos[1] < 0 or pos[0] >= len(tab[0]) or pos[1] >= len(tab):
 # 		return
-	
+
 # 	if tab[pos[1]][pos[0]] != 0:
 # 		return
-	
+
 # 	tab[pos[1]][pos[0]] = -1
 
 # 	repend((pos[0] - 1, pos[1] - 1))

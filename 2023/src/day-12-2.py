@@ -10,7 +10,7 @@ results = []
 def get_nums(current, raw=False):
 	nums = []
 	counter = 0
-	
+
 	for c in current:
 		if c == '?':
 			break
@@ -44,7 +44,7 @@ def is_solved(preset, current):
 def calc_nb_arrangements(preset, current):
 	if '?' not in current:
 		return 1 if is_solved(preset, current) else 0
-	
+
 	nums, counter = get_nums(current, True)
 
 	if len(nums) > len(preset):
@@ -57,7 +57,7 @@ def calc_nb_arrangements(preset, current):
 
 	i = current.find('?')
 	res = 0
-	
+
 	current = current[:i] + '#' + current[i + 1:]
 	res += calc_nb_arrangements(preset, current)
 	current = current[:i] + '.' + current[i + 1:]

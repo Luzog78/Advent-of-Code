@@ -54,7 +54,7 @@ class Beam:
 					self.vy = -1
 					beams.append(Beam(self.x, self.y, 0, 1))
 					beams[-1].move()
-			
+
 			if self.vx == 1 and self.vy == 0:
 				if mirr_map[self.y][self.x][0]:
 					beams.remove(self)
@@ -82,7 +82,7 @@ class Beam:
 		if self.x < 0 or self.x >= len(mirr_map[0]) or self.y < 0 or self.y >= len(mirr_map):
 			beams.remove(self)
 			return
-	
+
 	def copy(self):
 		return Beam(self.x, self.y, self.vx, self.vy)
 
@@ -110,7 +110,7 @@ for i in range(len(simulations)):
 	# for l1, l2 in zip(input, light_map):
 	# 	print(l1, end=' ')
 	# 	print(''.join(['#' if c else '.' for c in l2]))
-	
+
 	simulations[i][1] = sum(sum(1 if c > 0 else 0 for c in l) for l in light_map)
 
 result = max(simulations, key=lambda s: s[1])

@@ -28,7 +28,7 @@ def parse(i, j):
 				surrounded.remove(s)
 		num += tab[i][j]
 		j += 1
-	
+
 	return int(num)
 
 for i in range(len(tab)):
